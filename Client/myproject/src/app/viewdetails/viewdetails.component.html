@@ -1,0 +1,446 @@
+<style>
+  .form-container {
+    animation: fadeIn 0.8s ease-in-out;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Fade-in animation for the form */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Animated input fields */
+  .form-control-modern {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    border-radius: 0;
+    outline: none;
+    background: transparent;
+    padding: 5px 0;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .form-control-modern:focus {
+    border-bottom: 2px solid #007bff;
+    outline: none;
+    box-shadow: #aaa;
+    transform: scale(1.02);
+  }
+
+  .form-control-modern::placeholder {
+    color: #aaa;
+    transition: color 0.3s;
+  }
+
+  .form-control-modern:focus::placeholder {
+    color: transparent;
+  }
+
+  /* Labels with slide-in animation */
+  .form-label-modern {
+    font-weight: bold;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+    opacity: 0;
+    animation: slideIn 0.6s ease-out forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Submit button animation */
+  .btn-primary {
+    transition: background-color 0.3s, transform 0.3s;
+    animation: buttonFadeIn 1s ease-out forwards;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+
+  @keyframes buttonFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Table animation */
+  .table {
+    animation: tableFadeIn 1s ease-in-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes tableFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .navbar {
+  position: absolute;
+  width: 100%;
+  z-index: 10; /* Ensures the navbar stays above the gradient */
+}
+
+.navbar-toggler-icon {
+  background-image: url('data:image/svg+xml;charset=UTF8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23fff" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba%28255, 255, 255, 1%29" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f8d800; /* Add a slight hover color for better effect */
+  transition: color 0.3s ease;
+}
+
+  /* Row hover effect */
+  .table tbody tr:hover {
+    background-color: #495057;
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: all 0.3s ease;
+  }
+
+  /* Gradient background */
+  .gradient-custom {
+  position: static;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  animation: gradientAnimation 10s ease infinite alternate;
+  background-size: cover;
+  z-index: -1; /* Ensures the gradient stays behind all other content */
+}
+/* Transparent dropdown menu */
+.dropdown-menu {
+  background-color: rgba(255, 255, 255, 0.2); /* Light transparent background */
+  backdrop-filter: blur(5px); /* Adds a blur effect to enhance readability */
+  border: none; /* Removes border for a clean look */
+  box-shadow: none; /* Removes default shadow */
+  animation: fadeIn 0.5s ease-in-out; /* Optional fade-in animation */
+}
+
+/* Dropdown items styling */
+.dropdown-item {
+  color: white; /* Text color for dropdown items */
+  transition: background-color 0.3s, color 0.3s; /* Smooth hover effects */
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Slightly brighter hover effect */
+  color: #f8d800; /* Add hover color contrast */
+}
+
+/* Arrow in dropdown toggler */
+.navbar .dropdown-toggle::after {
+  color: white; /* Ensures the dropdown arrow matches text color */
+}
+
+/* Optional: Adjust dropdown animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.container {
+  position: relative; /* Keeps container content above the gradient */
+  z-index: 1;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+  }
+  100% {
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+  }
+}
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+.card-text {
+  font-size: 1rem;
+  color: #666;
+}
+.btn {
+  font-size: 1rem;
+  font-weight: bold;
+}
+</style>
+<div class="gradient-custom text-white">
+
+<nav class="navbar navbar-expand-lg bg-transparent">
+  <a class="navbar-brand text-white" routerLink="log" style="font-size: 1.8rem; font-weight: bold;">TODO</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <button 
+        class="btn btn-link nav-link text-white text-uppercase"  
+        (click)="toggleDiv()" 
+        style="cursor: pointer; transition: color 0.3s;">
+        {{'Add Task'|translate}}
+      </button>
+    </li>
+    
+    <!-- View Task Dropdown -->
+    <li class="nav-item dropdown">
+      <button class="nav-link dropdown-toggle text-white text-uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {{'View Tasks'|translate}}
+      </button>
+      <ul class="dropdown-menu">
+        <li><button class="dropdown-item text-uppercase" (click)="showall()">{{'View All Tasks'|translate}}</button></li>
+        <li><button class="dropdown-item text-uppercase" (click)="showcomplete()">{{'View Completed Tasks'|translate}}</button></li>
+        <li><button class="dropdown-item text-uppercase" (click)="showincomplete()">{{'View Incomplete Tasks'|translate}}</button></li>
+      </ul>
+    </li>
+  </ul>
+  
+  <ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+      <button class="nav-link btn btn-link text-white text-uppercase" (click)="changeLanguage('en')" style="transition: color 0.3s;">{{'English'|translate}}</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link btn btn-link text-white text-uppercase" (click)="changeLanguage('ml')" style="transition: color 0.3s;">{{'Malayalam'|translate}}</button>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white text-uppercase" href="#" style="transition: color 0.3s;">{{'Logout'|translate}}</a>
+    </li>
+  </ul>
+</div>
+</nav>
+  <br>
+<div class="container-fluid h-auto w-auto">  <div class="container py-5">
+  <br><h1 class="text-center">{{'WELCOME'|translate}} {{ data.first_name | uppercase }} {{ data.last_name | uppercase }}</h1>
+  <div class="container mt-4">
+    <div class="container mt-4">
+      <div class="card shadow-lg bg-transparent border-0">
+        <div class="card-body text-center text-white" style="backdrop-filter: blur(10px);">
+          <h3 class="card-title text-white-50 text-uppercase">{{'What do you Want to do'|translate}}</h3>
+          <p class="card-text text-white-50">{{'Manage your tasks effectively'|translate}}</p>
+          
+          <!-- Buttons -->
+          <div class="d-grid gap-3 mt-4">
+            <button 
+              class="btn btn-outline-light btn-lg px-3 btn-sm w-auto h-auto  text-uppercase" 
+              (click)="toggleDiv()">{{'Add Task'|translate}}
+            </button>
+            <button 
+              class="btn btn-outline-light btn-lg px-3 btn-sm  text-uppercase" 
+              (click)="showall()">{{'View All Tasks'|translate}}
+            </button>
+            <button 
+              class="btn btn-outline-light btn-lg px-3 btn-sm  text-uppercase" 
+              (click)="showcomplete()">{{'View Completed Tasks'|translate}}
+            </button>
+            <button 
+              class="btn btn-outline-light btn-lg px-3 btn-sm  text-uppercase" 
+              (click)="showincomplete()">{{'View Incomplete Tasks'|translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    
+  <div *ngIf="isDivVisible">
+    <h2 class="text-center mt-4">{{'CREATE TASK'|translate}}</h2>
+    <form #form3="ngForm" (ngSubmit)="addtodo(form3.value)" class="form-container mx-auto mt-4" style="max-width: 500px;">
+      <div class="mb-4">
+          <label for="taskname" class="form-label-modern">{{'Task'|translate}}</label>
+          <input id="taskname" class="form-control-modern w-100" ngModel type="text" name="taskname" placeholder="{{'Enter the name of the task'|translate}}" required />
+        </div>
+        <div class="mb-4">
+          <label for="taskdesc" class="form-label-modern">{{'Description'|translate}}</label>
+          <textarea id="taskdesc" class="form-control-modern w-100" ngModel name="taskdesc" placeholder="{{'Enter the Description of the task'|translate}}" rows="1" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">{{'Add Task'|translate}}</button>
+      </form>
+    </div>
+<br>
+    <div class="mt-4 text-center"  *ngIf = "showall1">
+      <h1 class="text-center">{{'VIEW TASKS'|translate}}</h1>
+
+      <div class="table-responsive">
+        <table class="table table-dark table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">{{'Task'|translate}}</th>
+              <th scope="col">{{'Description'|translate}}</th>
+              <th scope="col">{{'Status'|translate}}</th>
+              <th scope="col">{{'Edit'|translate}}</th>
+              <th scope="col">{{'Delete'|translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of todo">
+              <td>{{ i["taskname"] }}</td>
+              <td>{{ i["taskdesc"] }}</td>
+              <td>{{ i["status"] }}</td>
+              <td><button class="btn btn-outline-primary btn-sm border-0" (click)="update(i['id'])">{{'Edit'|translate}}</button></td>
+              <td><button class="btn btn-outline-danger btn-sm border-0" (click)="deletask(i['id'])">{{'Delete'|translate}}</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<br><br><br><div class="container">
+  <div class="mt-4 text-center" *ngIf = "showcomplete1">
+    <h1>{{'VIEW COMPLETED TASKS'|translate}}</h1>
+  
+    <div class="table-responsive">
+      <table class="table table-dark table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">{{'Task'|translate}}</th>
+            <th scope="col">{{'Description'|translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of complete">
+            <td>{{ i["taskname"] }}</td>
+            <td>{{ i["taskdesc"] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<br><br><br><div class="container">
+  <div class="mt-4 text-center" *ngIf = "showincomplete0">
+    <h1>{{'VIEW INCOMPLETED TASKS'|translate}}</h1>
+  
+    <div class="table-responsive">
+      <table class="table table-dark table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">{{'Task'|translate}}</th>
+            <th scope="col">{{'Description'|translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of incomplete">
+            <td>{{ i["taskname"] }}</td>
+            <td>{{ i["taskdesc"] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+  <div *ngIf = "show">
+    <h2 class="text-center mt-4">{{'UPDATE TASK'|translate}}</h2>
+    <form 
+      #form2="ngForm" 
+      (ngSubmit)="updatetodo(form2.value)" 
+      class="form-container mx-auto mt-4" 
+      style="max-width: 500px;">
+      
+      <!-- Task Title -->
+      <div class="mb-4">
+        <label for="title" class="form-label-modern">{{'Task'|translate}}</label>
+        <input 
+          id="taskname" 
+          class="form-control-modern w-100" 
+          type="text" 
+          name="taskname" 
+          placeholder="{{ 'Enter the name of the task'|translate }}" 
+          ngModel 
+          [(ngModel)]="d.taskname" 
+          required />
+      </div>
+
+      <!-- Task Description -->
+      <div class="mb-4">
+        <label for="description" class="form-label-modern">{{'Description'|translate}}</label>
+        <textarea 
+          id="description" 
+          class="form-control-modern w-100" 
+          name="taskdesc" 
+          placeholder="{{ 'Enter the Description of the task'|translate }}" 
+          rows="1" 
+          ngModel 
+          [(ngModel)]="d.taskdesc" 
+          required></textarea>
+      </div>
+      
+      <!-- Task Status -->
+      <div class="mb-4 text-dark">
+        <label class="form-label-modern">{{'Status'|translate}}</label>
+        <div>
+          <input 
+            id="status-complete" 
+            class="form-check-input" 
+            type="radio" 
+            name="status" 
+            value="1" 
+            ngModel 
+            required />
+          <label for="status-complete" class="form-check-label-modern">{{'Complete'|translate}}</label>
+        </div>
+        <div>
+          <input 
+            id="status-incomplete" 
+            class="form-check-input" 
+            type="radio" 
+            name="status" 
+            value="0" 
+            ngModel />
+          <label for="status-incomplete" class="form-check-label-modern">{{'Incomplete'|translate}}</label>
+        </div>
+      </div>
+      
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary w-100">{{'Update Task' |translate}}</button>
+    </form>
+  </div>
+</div>

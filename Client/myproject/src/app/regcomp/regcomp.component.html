@@ -1,0 +1,164 @@
+<style>
+    .gradient-custom {
+      background: linear-gradient(to right, #6a11cb, #2575fc); /* Purple to Blue gradient */
+       /* Subtle background color shift */
+    }
+  
+
+    /* Card fade-in animation */
+    .card {
+      opacity: 0;
+      transform: translateY(50px);
+      animation: cardFadeIn 1s forwards ease-out;
+    }
+  
+    @keyframes cardFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    /* Form controls hover and focus animations */
+    .form-control {
+      background-color: #333;
+      color: #fff;
+      border: 1px solid #555;
+      border-radius: 5px;
+      transition: all 0.3s ease-in-out;
+    }
+  
+    .form-control:focus {
+      border-color: #6a11cb;
+      background-color: #444;
+      transform: scale(1.02);
+      outline: none;
+    }
+  
+    .form-control::placeholder {
+      color: #aaa;
+      opacity: 1;
+      transition: color 0.3s;
+    }
+  
+    .form-control:focus::placeholder {
+      color: transparent;
+    }
+  
+    /* Button hover effect */
+    .btn {
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+  
+    .btn:hover {
+      background-color: #2575fc;
+      color: #fff;
+      transform: scale(1.05);
+    }
+  
+    /* Fade-in for the header */
+    h2 {
+      animation: textFadeIn 1.2s ease-out forwards;
+      opacity: 0;
+    }
+  
+    @keyframes textFadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+
+<div class="position-absolute top-0 end-0 me-2 mt-2">
+  <button 
+    class="btn btn-outline-light btn-lg px-3 btn-sm w-auto me-2" 
+    (click)="changeLanguage('en')">
+    {{'English'|translate}}
+  </button>
+  <button 
+    class="btn btn-outline-light btn-lg px-3 btn-sm w-auto" 
+    (click)="changeLanguage('ml')">
+    {{'Malayalam'|translate}}
+  </button>
+</div>
+
+<div class="container-fluid vh-100 gradient-custom">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-md-6">
+      <div class="card bg-dark text-white" style="border-radius: 1rem;">
+        <div class="card-body p-5">
+          <h2 class="fw-bold mb-2 text-uppercase text-center">{{ 'Sign Up' |translate}}</h2>
+            <p class="card-text text-center" style="color: #aaa;">{{ 'Please enter your details here' |translate}}</p>
+            <form class="form-group" action="" #form1="ngForm" (ngSubmit)="registerdetails(form1.value)">
+              <input
+                class="form-control mb-3"
+                ngModel
+                type="text"
+                name="first_name"
+                placeholder="{{'Enter your first name' |translate}}"
+              />
+              <input
+                class="form-control mb-3"
+                ngModel
+                type="text"
+                name="last_name"
+                placeholder="{{'Enter your last name'|translate}}"
+              />
+              <input
+                class="form-control mb-3"
+                ngModel
+                type="email"
+                name="email"
+                placeholder="{{'Enter your email'|translate}}"
+              />
+              <input
+                class="form-control mb-3"
+                ngModel
+                type="number"
+                name="contact"
+                placeholder="{{'Enter your contact number'|translate}}"
+              />
+              <div style="color: #aaa;">
+                <label>{{'Gender'|translate}}:</label>&nbsp;&nbsp;
+                <input
+                  class="radio"
+                  ngModel
+                  type="radio"
+                  name="gender"
+                  value="Male"
+                />&nbsp;&nbsp;{{'M'|translate}}
+                <input
+                  class="radio"
+                  ngModel
+                  type="radio"
+                  name="gender"
+                  value="Female"
+                />&nbsp;&nbsp;{{'F'|translate}}
+              </div>
+              <br />
+              <input
+                class="form-control mb-3"
+                ngModel
+                type="text"
+                name="username"
+                placeholder="{{'Enter your Username'|translate}}"
+              />
+              <input
+                class="form-control mb-3"
+                ngModel
+                type="password"
+                name="password"
+                placeholder="{{'Enter your Password'|translate}}"
+              />
+  
+              <input
+                class="form-control btn btn-outline-light text-uppercase"
+                type="submit"
+                value="{{'Sign Up'|translate}}"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
